@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Todo List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card  *ngFor="let lista of listaDeseos.listas | pendientes:false; let i = index">
+
+    <ion-item color='primary' (click)="verDetalle(lista, i)">
+      <h2>{{lista.nombre}}</h2>
+
+    </ion-item>
+
+    <ion-list >
+
+      <ion-item (click)="verDetalle(lista,i)"
+        *ngFor="let item of lista.item">
+        <ion-icon ios="ios-square" *ngIf="!item.completado" md="md-square"></ion-icon>
+        <ion-icon ios="ios-checkmark-circle" *ngIf="item.completado" md="md-checkmark-circle"></ion-icon>
+        {{item.nombre}}
+      </ion-item>
+
+    </ion-list>
+
+  </ion-card>
+
+
+  <ion-fab rigth bottom>
+    <button ion-fab color='primary' (click)="irAgregar()">
+      <ion-icon name="add" md="md-add"></ion-icon></button>
+
+  </ion-fab>
+</ion-content>
